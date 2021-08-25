@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-spring # Name of the deployment
+  namespace: default # Name of the namespace
+  labels:
+    app: deployment-spring # Name of your application
+spec:
+  selector:
+    matchLabels:
+      app: deployment-spring # Name of your application
+  replicas: 2 # Number of replicas
+  template:
+    metadata:
+      labels:
+        app: deployment-spring # Name of your application
+    spec:
+      containers:
+      # Containers are the individual pieces of your application that you want
+      # to run.
+      - name: spring-test # Name of the container
+        image: mauritzon/spring-test:latest # The image you want to run
+        ports:
+        # Ports are the ports that your application uses.
+        - containerPort: 8080 # The port that your application uses
